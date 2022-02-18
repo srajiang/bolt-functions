@@ -1,0 +1,51 @@
+{
+    "envelope_id": "fe125cd0-5089-4e7c-8da3-e8a77e5bb4bf",
+    "payload": {
+        "token": "xxxxxxxxx",
+        "team_id": "T0xxx",
+        "api_app_id": "Axxxxxxx",
+        "event": {
+            "type": "function_executed",
+            "function": {
+                "id": "Fnxxxxx",
+                "callback_id": "reverse",
+                "title": "bolt-reverse",
+                "description": "Takes a string and reverses it",
+                "type": "app",
+                "input_parameters": [
+                    {
+                        "type": "string",
+                        "name": "stringToReverse",
+                        "description": "The string to reverse",
+                        "title": "String To Reverse",
+                        "is_required": true
+                    }
+                ],
+                "output_parameters": [
+                    {
+                        "type": "string",
+                        "name": "reverseString",
+                        "description": "The string in reverse",
+                        "title": "Reverse String",
+                        "is_required": true
+                    }
+                ],
+                "app_id": "A0340F2HB25",
+                "date_updated": 1645142932
+            },
+            "function_execution_id": "Fx033FLFB99U",
+            "inputs": {
+                "stringToReverse": "test"
+            },
+            "workflow_token": "xwfp-xxxxxxxx",
+            "event_ts": "1645143518.257152"
+        },
+        "type": "event_callback",
+        "event_id": "Ev033QKMN0A0",
+        "event_time": 1645143518
+    },
+    "type": "events_api",
+    "accepts_response_payload": false,
+    "retry_attempt": 0,
+    "retry_reason": ""
+}
