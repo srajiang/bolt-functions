@@ -9,7 +9,15 @@
         "bot_user": {
             "display_name": "Bolt Functions",
             "always_online": false
-        }
+        },
+        "shortcuts": [
+            {
+                "name": "reserse-bolt-shortcut",
+                "type": "global",
+                "callback_id": "reverse_shortcut",
+                "description": "shortcut to reverse msg"
+            }
+        ]
     },
     "oauth_config": {
         "scopes": {
