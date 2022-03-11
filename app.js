@@ -16,19 +16,23 @@ const app = new App({
 
 // we should create an app.function listener instead of using app.event. 
 // we probably want to provide a client that uses the event.workflow_token instead of the bot token
-app.event('function_executed', async ({ event, body, client, success, error}) => {
-    console.log(event);
+app.event('function_executed', async ({ event, body, client, success, error }) => {
+  console.log(event);
 
-    const reverseString = event.inputs.stringToReverse.split("").reverse().join("");
+  const reverseString = event.inputs.stringToReverse.split("").reverse().join("");
+  console.log(reverseString);
 
-   //This should instead be a step in the workflow that uses the outputs from the functions.completeSuccess api call
-   client.chat.postMessage({
-       channel: event.inputs.channel_id,
-       text: `You reversed "${event.inputs.stringToReverse}" to ${reverseString}`
-   })
+  const wToken = event.workflow_token; // this token does not contain adequate scopes to make the chat.postMessage call
+  console.log(wToken);
 
-  //  maybe we should have a utility for success/error -> success({outputs: { reverseString }, function_execution_id: event.function_execution_id})
-  client.apiCall('functions.completeSuccess', {outputs: { reverseString }, function_execution_id: event.function_execution_id})
+  //This should instead be a step in the workflow that uses the outputs from the functions.completeSuccess api call
+  await client.chat.postMessage({
+    channel: event.inputs.channel_id,
+    text: `You reversed "${event.inputs.stringToReverse}" to ${reverseString}`
+  })
+
+  // should have a utility for success/error -> success({outputs: { reverseString }, function_execution_id: event.function_execution_id})
+  await client.apiCall('functions.completeSuccess', { outputs: { reverseString }, function_execution_id: event.function_execution_id })
   /* 
     call "functions.completeSuccess" with {
     outputs,
